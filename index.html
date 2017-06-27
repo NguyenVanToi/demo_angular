@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Demo project Angular</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="lib/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="lib/main.css">
+        <script type="text/javascript" src="lib/angular.min.js"></script>
+        <script type="text/javascript" src="lib/jquery-3.2.1.js"></script>
+    </head>
+    <body>
+        <div data-ng-app="mypro" data-ng-controller="content" class="container">
+            <h1>{{"All Users"}}</h1>
+            <div class="row">
+                <div class="col-lg-4 border-mid">
+                    <input id="search-user" type="text" placeholder="Search User" class="form-control" data-ng-model="userinput">
+                    <button class="btn btn-primary search-btn" type="submit" data-ng-click="search()">Search</button>
+                    <div id="scroll-box" >
+                        <p class="list-user" ng-repeat="x in users | filter : fil">
+                            {{x.name + ' '}}
+                            <input type="checkbox" data-ng-model="x.check" ng-change="select(x)">
+                        </p>
+                        <!--<p class="list-user1"></p>-->
+                    </div>
+                    <button type="button" class="btn-add" data-ng-click="adduser()">Add to User list</button>
+                </div>
+                <div class="col-lg-4">
+                    <h2>Scenario Name</h2>
+                    <h3>User list</h3>
+                    <table class="table table-striped table-hover">
+                        <tr data-ng-repeat="x in add_users">
+                            <td>
+                                {{x.name}}
+                            </td>
+                            <td>
+                                <button type="button" class="close" data-ng-click="del(x)" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <script>
+                angular.module("mypro", []).controller("content", function ($scope) {
+                    $scope.users=[
+                        {id: '1', name:'user 1'},
+                        {id: '2',name:'user 2'},
+                        {id: '3',name:'user 3'},
+                        {id: '4',name:'user 4'},
+                        {id: '5',name:'user 5'},
+                        {id: '6',name:'user 6'},
+                        {id: '7',name:'user 7'},
+                        {id: '8',name:'user 8'},
+                        {id: '9',name:'user 9'}];
+
+                    $scope.add_users=[];
+                    $scope.temp=[];
+                    $scope.search=function () {
+                        $scope.fil=$scope.userinput;
+                    };
+
+                    $scope.select=function(x){
+                        if(x.check==true){
+                            $scope.temp.push({id: x.id, name: x.name});
+                        }else{
+                            var i=0;
+                            while(i < $scope.temp.length){
+                                if($scope.temp[i].name==x.name){
+                                    $scope.temp.splice(i, 1);
+                                }
+                                i ++;
+                            }
+                        }
+                    };
+                    $scope.adduser=function () {
+                        var i=0, j = 0, k = 0;
+
+                        while(j < $scope.temp.length){
+                           for(k = 0; k < $scope.users.length; k ++){
+                                if($scope.users[k].name ==  $scope.temp[j].name){
+                                    $scope.users.splice(k, 1);
+                                }
+                            }
+                            j ++;
+                        };
+
+                        if($scope.temp.length > 0){
+                            while(i < $scope.temp.length){
+                                $scope.add_users.push({id: $scope.temp[i].id, name:$scope.temp[i].name});
+                                $scope.temp.shift();
+                            }
+                        }
+                    };
+                    $scope.del = function(x) {
+                        $scope.users.push({id: x.id, name: x.name});
+                        $scope.users.sort();
+                        var i = 0;
+                        for(i = 0; i < $scope.add_users.length; i ++){
+                            if($scope.add_users[i] == x){
+                                $scope.add_users.splice(i, 1);
+                            }
+                        }
+                    };
+                });
+        </script>
+    </body>
+</html>

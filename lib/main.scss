@@ -1,0 +1,24 @@
+//scroll-box
+#scroll-box{
+  width: 200px;
+  height: 300px;
+  overflow: scroll;
+  border: 1px solid #CCCCCC;
+  padding: 5px;
+  //margin: 1em 0;
+}
+.btn-add{
+  margin-top: 10px;
+}
+.search-btn{
+  margin-bottom: 10px;
+}
+#search-user{
+  width: 60%;
+  float: left;
+  margin-right:10px;
+}
+.border-mid{
+  border-right: 2px solid blue;
+  margin-right: 50px;
+}

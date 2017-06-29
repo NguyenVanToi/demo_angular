@@ -1,23 +1,41 @@
-#scroll-box {
-  width: 200px;
-  height: 300px;
-  overflow: scroll;
-  border: 1px solid #CCCCCC;
-  padding: 5px; }
+.scroll-box {
+  border: 1px solid #8c8c8c;
+  border-collapse: collapse; }
 
-.btn-add {
-  margin-top: 10px; }
+.scroll-box tr {
+  display: flex; }
 
-.search-btn {
-  margin-bottom: 10px; }
+.scroll-box td, th {
+  padding: 3px;
+  flex: 1 auto; }
 
-#search-user {
-  width: 60%;
-  float: left;
-  margin-right: 10px; }
+.scroll-box thead tr:after {
+  content: '';
+  overflow-y: scroll;
+  visibility: hidden;
+  height: 0; }
 
-.border-mid {
-  border-right: 2px solid blue;
-  margin-right: 50px; }
+.scroll-box thead th {
+  flex: 1 auto;
+  display: block; }
+
+.scroll-box tbody {
+  display: block;
+  width: 100%;
+  overflow-y: scroll;
+  height: 350px; }
+
+.row .users {
+  border-right: 2px solid blue; }
+  .row .users .search-btn {
+    margin-bottom: 30px;
+    margin-top: 20px; }
+  .row .users .btn-add {
+    margin-top: 10px; }
+.row .add-users .text-scenario, .row .add-users .text-userlist {
+  font-size: 25px;
+  margin-bottom: 7px; }
+.row .add-users .btn-del {
+  color: red; }
 
 /*# sourceMappingURL=main.css.map */

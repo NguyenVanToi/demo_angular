@@ -39,7 +39,7 @@
                             </thead>
                             <tr class="list-user" ng-repeat="x in users | filter : {name: '' + fil} | orderBy: sortlist">
                                 <td width="40%">
-                                    <input id={{x.id}} type="checkbox" data-ng-click="select(x)" class="checkbox" data-ng-checked="checkall">
+                                    <input id={{x.id}} type="checkbox" data-ng-model="x.check" data-ng-click="select(x)" class="checkbox" data-ng-checked="checkall">
                                 </td>
                                 <td width="60%">
                                     <label class="checkbox-inline" for={{x.id}}>

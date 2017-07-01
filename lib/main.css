@@ -38,4 +38,7 @@
 .row .add-users .btn-del {
   color: red; }
 
+.modal-backdrop.in {
+  display: none; }
+
 /*# sourceMappingURL=main.css.map */

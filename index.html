@@ -14,6 +14,7 @@
         <script type="text/javascript" src="lib/angular.min.js"></script>
         <script type="text/javascript" src="lib/jquery-3.2.1.js"></script>
         <script type="text/javascript" src="lib/script.js"></script>
+        <script type="text/javascript" src="lib/bootstrap.min.js"></script>
     </head>
     <body>
         <div data-ng-app="mypro" data-ng-controller="content" class="container">
@@ -38,7 +39,7 @@
                             </thead>
                             <tr class="list-user" ng-repeat="x in users | filter : {name: '' + fil} | orderBy: sortlist">
                                 <td width="40%">
-                                    <input id={{x.id}} type="checkbox" data-ng-model="x.check" data-ng-click="select(x)" class="checkbox" data-ng-checked="checkall">
+                                    <input id={{x.id}} type="checkbox" data-ng-click="select(x)" class="checkbox" data-ng-checked="checkall">
                                 </td>
                                 <td width="60%">
                                     <label class="checkbox-inline" for={{x.id}}>
@@ -48,7 +49,23 @@
                             </tr>
                         </table>
                     </div>
-                    <button type="button" class="btn-add btn btn-default" data-ng-click="adduser()">Add to User list</button>
+                    <button type="button" class="btn-add btn btn-default" data-ng-click="adduser()" data-toggle="modal" data-target="#confirmation-add">Add to User list</button>
+                    <div class="modal fade modalhidden" id="confirmation-add" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" data-ng-show="showmodal">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header bg-primary">
+                                    <h4 class="modal-title">Notification:</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <h4 class="text-danger">Let's check user!</h4>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
                 <div class="col-lg-9 add-users">
                     <strong><p class="text-scenario">Scenario Name</p></strong>
@@ -80,7 +97,27 @@
                                     <i class="fa fa-sort"></i>
                                 </button>
                             </th>
-                            <th width="5%"></th>
+                            <th width="5%">
+                                <button type="button" class="close" data-toggle="modal" data-target="#confirmation-delall" aria-label="Close">
+                                    <span aria-hidden="true" class="btn-del">&times;</span>
+                                </button>
+                                <div class="modal fade" id="confirmation-delall"  role="dialog" tabindex="-1" aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-primary">
+                                                <h4 class="modal-title">Notification:</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h4>Are you sure delete all users?</h4>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger"  data-dismiss="modal" data-ng-click="delAll()">Accept</button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
                         </thead>
                         <tbody>
                             <tr data-ng-repeat="x in add_users | orderBy : orderby : sortchange">
@@ -89,7 +126,23 @@
                                 <td width="10%">{{x.age}}</td>
                                 <td width="38%">{{x.email}}</td>
                                 <td width="5%">
-                                    <button type="button" class="close" data-ng-click="del(x)" data-confirm-click="" aria-label="Close"><span aria-hidden="true" class="btn-del">&times;</span></button>
+                                    <button type="button" class="close" data-toggle="modal" data-target="#confirmation-del" aria-label="Close"><span aria-hidden="true" class="btn-del">&times;</span></button>
+                                    <div class="modal fade" id="confirmation-del" role="dialog" tabindex="-1" aria-labelledby="myModalLabel">
+                                        <div class="modal-dialog modal-sm">
+                                            <div class="modal-content">
+                                                <div class="modal-header bg-primary">
+                                                    <h4 class="modal-title">Notification:</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h4>Are you sure delete user?</h4>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-ng-click="del(x)" >Accept</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>

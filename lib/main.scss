@@ -42,6 +42,10 @@
     .btn-add{
       margin-top: 10px;
     }
+  //  modal
+  //  .modalhidden{
+  //    opacity: 0;
+  //  }
   }
   .add-users{
     .text-scenario, .text-userlist{
@@ -53,6 +57,10 @@
     }
   }
 
+}
+//modal
+.modal-backdrop.in{
+  display: none;
 }
 
 

@@ -37,8 +37,22 @@
   margin-bottom: 7px; }
 .row .add-users .btn-del {
   color: red; }
+.row .add-users .btn-listuser {
+  float: right;
+  margin-top: 10px; }
 
-.modal-backdrop.in {
-  display: none; }
+.list-user .header-listuser {
+  margin-left: 0;
+  margin-bottom: 15px;
+  margin-right: -15px; }
+.list-user .btn-adduser {
+  float: right; }
+.list-user .search-user {
+  float: left; }
+.list-user .btn-back {
+  margin-top: 25px; }
+.list-user .content-modal {
+  padding-top: 30px;
+  padding-bottom: 15px; }
 
 /*# sourceMappingURL=main.css.map */

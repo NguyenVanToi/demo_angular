@@ -31,36 +31,53 @@
   overflow-y: scroll;
   height: 350px;
 }
-//rowww
-.row{
-  .users{
+//Scenario Name User
+.row {
+  .users {
     border-right: 2px solid blue;
-    .search-btn{
+    .search-btn {
       margin-bottom: 30px;
       margin-top: 20px;
     }
-    .btn-add{
+    .btn-add {
       margin-top: 10px;
     }
-  //  modal
-  //  .modalhidden{
-  //    opacity: 0;
-  //  }
   }
-  .add-users{
-    .text-scenario, .text-userlist{
+  .add-users {
+    .text-scenario, .text-userlist {
       font-size: 25px;
       margin-bottom: 7px;
     }
-    .btn-del{
-      color:red;
+    .btn-del {
+      color: red;
+    }
+    .btn-listuser {
+      float: right;
+      margin-top: 10px;
     }
   }
 
 }
-//modal
-.modal-backdrop.in{
-  display: none;
+//  List user, add, edit, delete
+.list-user{
+  .header-listuser{
+    margin-left: 0;
+    margin-bottom: 15px;
+    margin-right: -15px;
+  }
+  .btn-adduser {
+    float: right;
+  }
+  .search-user{
+    float: left;
+  }
+  .btn-back{
+    margin-top: 25px;
+  }
+  .content-modal{
+    padding-top: 30px;
+    padding-bottom: 15px;
+  }
 }
 
 
